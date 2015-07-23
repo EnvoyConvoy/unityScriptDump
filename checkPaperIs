@@ -1,0 +1,25 @@
+﻿#pragma strict
+
+
+var paperImage : GameObject;
+var paperSource : paperScript;
+
+function Start () {
+	paperImage.SetActive(false);
+	paperSource = GetComponent(paperScript);
+}
+
+
+
+
+function Update () {
+
+	if (paperSource.theMessage == true){
+
+				paperImage.SetActive(true);	
+				Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);	 
+				Destroy(gameObject.FindWithTag("startPaper"));
+					
+		
+		} 
+}
