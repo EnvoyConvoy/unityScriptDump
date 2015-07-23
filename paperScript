@@ -1,0 +1,56 @@
+﻿#pragma strict
+
+static var theMessage : boolean = false; 
+public var cursorTexture: Texture2D;
+public var cursorMode: CursorMode = CursorMode.Auto;
+public var hotSpot: Vector2 = Vector2.zero;
+
+var varKad : boolean;
+//-----------------------------------------------------------------------------------------------------------------------------
+function Start() {
+
+}
+//------------------------------------------------------------------------------------------------------------------------------
+function OnTriggerEnter2D(other: Collider2D){
+
+    if(other.gameObject.tag == "Player"){
+       varKad = true;
+       
+       
+    } 	
+
+}
+
+function OnTriggerExit2D(other: Collider2D) {
+
+	if(other.gameObject.tag == "Player") {
+		varKad = false;
+		
+	}
+
+}
+
+function OnMouseEnter() {
+	Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+	if (Input.GetMouseButtonDown(1)) {
+    	Debug.Log("Not so leethax");
+    		
+    		
+    }
+
+}
+
+function OnMouseExit() {
+	Cursor.SetCursor(null, Vector2.zero, cursorMode);
+}
+
+function Update ()
+ {
+     if(Input.GetMouseButtonDown(0) && (varKad)) {
+     	
+         theMessage = true;
+     } 		else	 {
+     			theMessage = false;
+     
+     	}
+}
