@@ -1,0 +1,22 @@
+﻿#pragma strict
+
+import UnityEngine.UI;
+ 
+ var messageIndex = 0;
+ var messages = ["Students!", "I am needed elsewhere and there is much to do.", ""];
+ var introText : Text;
+ 
+ function Start() {
+     introText = GetComponentInChildren(Text); 
+     introText.text = messages[messageIndex]; 
+ }
+ 
+ public function ShowNextMessage() {
+    if (Input.anyKeyDown) { messageIndex++; 
+     	if (messageIndex >= messages.length) {
+        	 messageIndex = 0; 
+     	
+     	}  
+ 	}
+ 	introText.text = messages[messageIndex];
+ }
