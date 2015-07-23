@@ -1,0 +1,28 @@
+﻿#pragma strict
+ 
+ var moveUp : KeyCode;
+ var moveDown : KeyCode;
+ var moveRight : KeyCode;
+ var moveLeft : KeyCode;
+ 
+ var speed : float = 5;
+ 
+ function Update () {
+         if (Input.GetKey(moveLeft)){
+             GetComponent.<Rigidbody2D>().velocity.x = speed * 3;
+             
+         }    else if (Input.GetKey(moveRight)) {
+             GetComponent.<Rigidbody2D>().velocity.x = speed * -3;
+         
+         }    else if (Input.GetKey(moveUp)) {
+             GetComponent.<Rigidbody2D>().velocity.y = speed * 3;
+         
+         }    else if (Input.GetKey(moveDown)) {
+             GetComponent.<Rigidbody2D>().velocity.y = speed * -3;
+         
+         } else {
+             GetComponent.<Rigidbody2D>().velocity.y = 0;
+             GetComponent.<Rigidbody2D>().velocity.x = 0;
+         }
+ 
+     }
