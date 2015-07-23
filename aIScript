@@ -1,0 +1,56 @@
+﻿#pragma strict
+
+ var playerPosition : Transform;
+ 
+ var tartarKower : boolean;
+ 
+ var ghostyGoo : Transform;
+ var ghostSpeed : float = 5;
+ var ghostNoise : AudioSource;
+ 
+function Start () {
+	tartarKower = false;
+}
+
+function aiSeek() {
+	transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerPosition.position.x, transform.position.y), ghostSpeed * Time.deltaTime);
+
+
+}
+
+function OnCollisionEnter2D(thing : Collision2D) {
+	if (thing.gameObject.tag=="Player"){
+	
+     	 Application.LoadLevel(0);
+     	 Destroy(gameObject.FindWithTag("Player"));
+         
+     }
+	
+		
+}
+
+function OnTriggerEnter2D(other: Collider2D){
+ 	
+    if(other.gameObject.tag == "Player") {
+    	ghostNoise.Play();
+    	tartarKower = true;
+//    	ghostyGoo.position = Vector2.MoveTowards(ghostyGoo.position, new Vector2(playerPosition.position.x, ghostyGoo.position.y), ghostSpeed * Time.deltaTime);
+    	
+    	
+	}
+ }
+ 
+ function OnTriggerExit2D(other: Collider2D) {
+ 
+ 	
+ 
+ }
+
+function Update() {
+	if (tartarKower) {
+		aiSeek();
+		
+	
+	}	
+
+}
