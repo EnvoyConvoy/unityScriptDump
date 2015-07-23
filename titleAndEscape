@@ -1,0 +1,56 @@
+﻿#pragma strict
+
+var titleNewCzeckini : boolean = false;
+var newGame : boolean = false;
+var loadGame : boolean = false;
+
+function Start () {
+	if (titleNewCzeckini) { 
+	titleNewCzeckini = false;
+	}
+	if (newGame) {
+	newGame = false;
+	
+	}
+	if (loadGame) {
+	loadGame = false;
+	
+	}
+
+}
+
+function quitAction () {
+	titleNewCzeckini = true;
+
+}
+
+function newGameAction () {
+	newGame = true;
+	
+
+}
+
+function loadGameAction () {
+	loadGame = true;
+
+
+}
+
+
+
+
+
+function Update () {
+	if (Input.GetKey (KeyCode.Escape)) {
+			Application.Quit();
+		} else if (torFloorGoreBore){
+		Application.Quit();
+	
+	}
+	
+	if (newGame) {
+		Application.LoadLevel(1);
+	
+	}
+	
+}
